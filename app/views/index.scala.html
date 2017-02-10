@@ -1,7 +1,7 @@
-@(message: String)
+@(title: String)
 
-@main("Welcome to Play") {
+@main("Play, React JS and webpack") {
+    <div id="app"></div>
 
-    @play20.welcome(message)
-
+    <script src="@routes.Assets.versioned("javascripts/build/app.js")"></script>
 }

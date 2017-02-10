@@ -1,6 +1,7 @@
 ##Atlantis Home Server
 ### dist standalone
 ```bash
+$ npm install  # for the first time.
 $ bin/activator dist
 ```
 

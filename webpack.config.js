@@ -6,6 +6,7 @@ var webpack = require('webpack'),
     srcPath = path.join(__dirname, 'app/assets/javascripts');
 
 var config = {
+    devtool: 'source-map',
     target: 'web',
     entry: {
         app: path.join(srcPath, 'app.jsx')

@@ -11,7 +11,7 @@ class Greeter extends React.Component {
     }
 
     sendMessage() {
-        this.client.sendMessage({id: 'admin'}, 'Hello World!')
+        this.client.sendMessage({id: 'admin@localhost'}, 'Hello World!')
     }
 
     render() {

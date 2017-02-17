@@ -9,7 +9,7 @@ var config = {
     devtool: 'source-map',
     target: 'web',
     entry: {
-        app: path.join(srcPath, 'app.jsx')
+        app: path.join(srcPath, 'index.js')
         //, common: ['react-dom', 'react']
     },
     resolve: {

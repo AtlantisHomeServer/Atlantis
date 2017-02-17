@@ -4,40 +4,42 @@
 
 import XMPP from 'stanza.io'
 
-export default class XMPPClient {
-    constructor(jid, pass) {
-        this.client = XMPP.createClient({
+class XMPPClient {
+    createClient(jid, password) {
+        var client = XMPP.createClient({
             jid: jid,
-            password: pass,
-
-            // If you have a .well-known/host-meta.json file for your
-            // domain, the connection transport config can be skipped.
+            password: password,
 
             transport: 'websocket',
             wsURL: 'ws://localhost:5280/websocket'
-            // (or `boshURL` if using 'bosh' as the transport)
         });
-        this.client.on('session:started', function () {
+
+        this.client.on('session:started', () => {
             this.client.getRoster();
             this.client.sendPresence();
-        }.bind(this));
+        });
 
-        this.client.on('chat', function (msg) {
-            this.client.sendMessage({
-                to: msg.from,
-                body: 'You sent: ' + msg.body
-            });
-        }.bind(this));
+        this.client.on('chat', (msg) => {
+            console.log(msg)
+        });
+
+        return client
     }
 
-    connect() {
-        this.client.connect()
+    connect(xmppClient) {
+        xmppClient.connect()
     }
 
     sendMessage(to, body) {
         this.client.sendMessage({
-            to: to,
+            to: to.id,
             body: body
         })
     }
+
+    extractXMPPClient(xmppClientInfo) {
+        return xmppClientInfo.get('xmppClient')
+    }
 }
+
+export default XMPPClient = new XMPPClient()

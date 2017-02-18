@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 import Greeter from './Greeter.jsx';
-import { createStore } from 'redux';
-import AtlantisStore from './redux'
 import '../stylesheets/style.scss'
-
-let atlantisStore = createStore(AtlantisStore)
-
-
 
 export default class App extends Component {
     render() {
